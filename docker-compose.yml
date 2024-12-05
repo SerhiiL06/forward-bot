@@ -1,0 +1,18 @@
+version: '3.9'
+
+
+services:
+  bot:
+   container_name: verify-bot
+   build:
+    context: .
+   command: python main.py
+   restart: always
+   volumes:
+     - .:/app/
+   depends_on:
+     - redis
+  
+  redis:
+    image: redis:7.4-alpine
+    restart: always

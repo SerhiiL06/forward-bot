@@ -35,7 +35,7 @@ EXCLUDE_WALLETS = [
 
 config = Config()
 
-storage = RedisStorage.from_url("redis://localhost:6379")
+storage = RedisStorage.from_url("redis://redis")
 
 bot = Bot(
     token=config.bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML)
