@@ -1,12 +1,12 @@
-from aiogram import F, Router, types
-from aiogram.filters import CommandStart, Command
-from core.settings import bot, config
+from aiogram import Router, types
+from aiogram.filters import Command, CommandStart
 from aiogram.types.input_file import FSInputFile
-from core.settings import bot
-from src.utils.buttons import buttons
-from src.utils.logic import hello_windows, main_menu
 from aiogram_tonconnect import ATCManager
 from aiogram_tonconnect.tonconnect.models import ConnectWalletCallbacks
+
+from core.settings import ADMIN_IDS, bot, config
+from src.utils.buttons import buttons
+from src.utils.logic import hello_windows, main_menu
 from src.utils.states import UserState
 
 main_router = Router(name=__name__)
@@ -31,6 +31,9 @@ async def connect_wallet(query: types.CallbackQuery, atc_manager: ATCManager):
 
 @main_router.message(Command("send"))
 async def send_message_on_channel(message: types.Message):
+
+    if message.from_user.id not in ADMIN_IDS:
+        return
 
     file = FSInputFile("./media/file.png")
     await bot.send_photo(

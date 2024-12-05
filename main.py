@@ -1,11 +1,11 @@
 import asyncio
 
-from core.settings import bot, dp, storage, EXCLUDE_WALLETS, config
-from src.headers.main import main_router
-from aiogram.fsm.storage.redis import RedisStorage
 from aiogram_tonconnect.handlers import AiogramTonConnectHandlers
 from aiogram_tonconnect.middleware import AiogramTonConnectMiddleware
 from aiogram_tonconnect.tonconnect.storage.base import ATCRedisStorage
+
+from core.settings import EXCLUDE_WALLETS, bot, config, dp, storage
+from src.headers.main import main_router
 
 
 async def application():

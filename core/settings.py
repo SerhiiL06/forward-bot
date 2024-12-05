@@ -1,8 +1,8 @@
 from aiogram import Bot, Dispatcher
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from aiogram.fsm.storage.redis import RedisStorage
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.fsm.storage.redis import RedisStorage
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Config(BaseSettings):
@@ -12,7 +12,7 @@ class Config(BaseSettings):
     manifest_url: str
 
 
-ADMIN_IDS = [391103075, 7101814585]
+ADMIN_IDS = [391103075]
 
 
 EXCLUDE_WALLETS = [
