@@ -2,6 +2,7 @@ from typing import Optional
 
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.types.web_app_info import WebAppInfo
 
 
 class Buttons:
@@ -11,7 +12,7 @@ class Buttons:
         return self.inline_builder(
             [
                 InlineKeyboardButton(
-                    text="some text",
+                    text="Click button",
                     url="https://t.me/test_hamster_key_bot?start=start",
                 )
             ]
@@ -22,8 +23,8 @@ class Buttons:
         return self.inline_builder(
             [
                 InlineKeyboardButton(
-                    text="here link to your site",
-                    url="https://google.com",
+                    text="Open website",
+                    web_app=WebAppInfo(url="https://pump.fun"),
                 ),
                 InlineKeyboardButton(
                     text="connect wallet",

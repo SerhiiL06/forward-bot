@@ -25,7 +25,6 @@ async def connect_wallet(query: types.CallbackQuery, atc_manager: ATCManager):
         after_callback=main_menu,
     )
     await atc_manager.connect_wallet(callbacks, check_proof=True)
-
     await query.answer()
 
 
