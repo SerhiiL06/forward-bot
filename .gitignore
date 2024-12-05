@@ -1,0 +1,6 @@
+.env
+.venv
+Pipfile
+Pipfile.lock
+test.py
+media/*
