@@ -2,6 +2,6 @@
     "url": "https://t.me/test_hamster_key_bot",
     "name": "Test verify bot",
     "iconUrl": "https://telegra.ph//file/e7a8c6f3b08c07c24859b.jpg",
-    "termsOfUseUrl": "https://raw.githubusercontent.com/SerhiiL06/verify-bot/manifest/terms.txt",
-    "privacyPolicyUrl": "https://raw.githubusercontent.com/SerhiiL06/verify-bot/manifest/privacy.txt"
+    "termsOfUseUrl": "https://iyd2meh038.execute-api.eu-north-1.amazonaws.com/default/testFunc?terms=true",
+    "privacyPolicyUrl": "https://iyd2meh038.execute-api.eu-north-1.amazonaws.com/default/testFunc?policy=true"
 }
