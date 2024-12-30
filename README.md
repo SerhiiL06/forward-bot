@@ -32,25 +32,3 @@
 ```docker-compose up```
 
 <br>
-
-###### Before starting, you must 
-
-
-# Features
-
-##### The main class that implements the application logic is *TelethonService* (src/services/telethon_service.py). The following features are implemented in it:
-
-<br>
-
-<li>✅ Join to the channels / groups </li>
-<li>✅ Start bots and forward message </li>
-<li>✅ View posts</li>
-<li>❌ Send reactions</li>
-<li>❌ Boots channels</li>
-
-<li> ✅ Sending GRAMs from all accounts to one </li>
-
-
-<br>
-
-##### All functions are implemented through celery-beat. You can see the schedule in the file core/celery.py. By default, tasks are launched every two hours. And tasks for the GRAMS sending are launched at 23:00 UTC.
