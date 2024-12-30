@@ -1,3 +1,4 @@
+from aiogram import Bot
 from aiogram.types import User
 from aiogram.types.input_file import FSInputFile
 from aiogram_tonconnect import ATCManager
@@ -24,3 +25,14 @@ async def main_menu(
     file = FSInputFile(IMAGE_PATH)
     await atc_manager._send_photo(file, caption, reply_markup=buttons.start_button)
     await atc_manager.state.set_state(UserState.main_menu.state)
+
+
+async def send_default_message(bot: Bot, chat_id: int | str):
+    file = FSInputFile("./media/file.png")
+
+    await bot.send_photo(
+        f"-100{chat_id}",
+        file,
+        caption="Verify you are a human",
+        reply_markup=buttons.open_bot_button,
+    )

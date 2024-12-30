@@ -4,4 +4,4 @@ Pipfile
 Pipfile.lock
 test.py
 media/*
-__pycache__/*
+__pycache__/

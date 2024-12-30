@@ -1,11 +1,49 @@
 from typing import Optional
 
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,
+                           KeyboardButton, ReplyKeyboardMarkup)
 from aiogram.types.web_app_info import WebAppInfo
+from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
+
+from src.utils.text import CANCEL, DEFAULT_MESSAGE, SEND
 
 
-class Buttons:
+class ButtonsBuilders:
+
+    @staticmethod
+    def inline_builder(
+        buttons: list[InlineKeyboardButton], size: Optional[tuple[int]] = ()
+    ) -> InlineKeyboardMarkup:
+        builder = InlineKeyboardBuilder()
+
+        builder.add(*buttons)
+
+        keyboard = builder.adjust(*size).as_markup()
+        keyboard.resize_keyboard = True
+        return keyboard
+
+    @staticmethod
+    def reply_markup_builder(
+        buttons: list[KeyboardButton], size: Optional[tuple[int]] = ()
+    ) -> ReplyKeyboardMarkup:
+        builder = ReplyKeyboardBuilder()
+
+        builder.add(*buttons)
+
+        keyboard = builder.adjust(*size).as_markup()
+        keyboard.resize_keyboard = True
+        return keyboard
+
+    @property
+    def cancel_button(self):
+        return KeyboardButton(text=CANCEL)
+
+    @property
+    def cancel(self):
+        return ReplyKeyboardMarkup(keyboard=[[self.cancel_button]])
+
+
+class Buttons(ButtonsBuilders):
 
     @property
     def open_bot_button(self):
@@ -16,6 +54,16 @@ class Buttons:
                     url="https://t.me/test_hamster_key_bot?start=start",
                 )
             ]
+        )
+
+    @property
+    def send_button(self):
+        return self.reply_markup_builder([KeyboardButton(text=SEND)])
+
+    @property
+    def send_default(self):
+        return self.reply_markup_builder(
+            [KeyboardButton(text=DEFAULT_MESSAGE), self.cancel_button], (1, 1)
         )
 
     @property
@@ -33,18 +81,6 @@ class Buttons:
             ],
             (1,),
         )
-
-    @staticmethod
-    def inline_builder(
-        buttons: list[InlineKeyboardButton], size: Optional[tuple[int]] = ()
-    ) -> InlineKeyboardMarkup:
-        builder = InlineKeyboardBuilder()
-
-        builder.add(*buttons)
-
-        keyboard = builder.adjust(*size).as_markup()
-        keyboard.resize_keyboard = True
-        return keyboard
 
 
 buttons = Buttons()
